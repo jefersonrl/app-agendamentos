@@ -48,72 +48,55 @@
 		<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
 
 		<script src="js/firebase.js"></script>
-		<script src="js/index.js"></script>
+		<script src="js/consulta.js"></script>
         <title>APLICATIVO</title>
     </head>
-    <body>
-        <div class="container">
-			<div class="row">
-				<nav class="navbar navbar-dark bg-dark col-12">
-					<a class="navbar-brand" href="index.html">APLICATIVO</a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="navbar-nav mr-auto">
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Opções
-								</a>
-								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<a class="dropdown-item" href="#">Cadastrar</a>
-									<a class="dropdown-item" href="consultarClientes.html">Consultar</a>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</nav>  
-			</div>
-			<div class="row">
-				<div class="card mb-3 col-12">
-					<div class="card-body">
-						<h5 class="card-title">Cadastrar - Agendamento de Potenciais Clientes</h5>
-						<p class="card-text">Sistema utilizado para agendamento de serviços.</p>
-						<p>
-							<form>
-								<div class="form-group">
-									<label for="exampleFormControlInput1">Nome:</label>
-									<input type="text" class="form-control" id="txtNome">
-								</div>
-								<div class="form-group">
-									<label for="exampleFormControlInput1">Telefone:</label>
-									<input type="tel" class="form-control" id="txtTelefone" placeholder="(xx)xxxxx-xxxx">
-								</div>
-								<div class="form-group">
-									<label for="exampleFormControlSelect1">Origem:</label>
-									<select class="form-control" id="txtOrigem">
-										<option>Celular</option>
-										<option>Fixo</option>
-										<option>Whatsapp</option>
-										<option>Facebook</option>
-										<option>Instagram</option>
-										<option>Google Meu Negocio</option>
-									</select>
-								</div>
-								<div class="form-group">
-									<label for="exampleFormControlInput1">Data do Contato:</label>
-									<input type="date" class="form-control" id="txtDataContato">
-								</div>
-								<div class="form-group">
-									<label for="exampleFormControlTextarea1">Observação</label>
-									<textarea class="form-control" id="txtObservacao" rows="3"></textarea>
-								</div>
-								<button type="submit" id="btnInserir" class="btn btn-primary">Cadastrar</button>
-							</form>
-						</p>
-					</div>
+<body> 
+	<div class="container">
+		<div class="row">
+			<nav class="navbar navbar-dark bg-dark col-12">
+				<a class="navbar-brand" href="index.html">APLICATIVO</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Opções
+							</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="index.html">Cadastrar</a>
+								<a class="dropdown-item" href="#">Consultar</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</nav>  
+		</div>
+		<div class="row">
+			<div class="card mb-3 col-12">
+				<div class="card-body">
+					<h5 class="card-title">Consultar - Contatos Agendados</h5>
+					<table class="table table-responsive" style="width: auto;">
+						<thead>
+							<tr>
+								<th scope="col">Nome</th>
+								<th scope="col">Telefone</th>
+								<th scope="col">Origem</th>
+								<th scope="col">Contato</th>
+								<th scope="col">Observação</th>
+								<th scope="col">Ação</th>
+							</tr>
+						</thead>
+						<tbody id="TableData">
+
+						</tbody>
+					</table>
+					<button type="button" id="btnListar" class="btn btn-primary">Buscar Agendamento</button>
 				</div>
 			</div>
 		</div>
-    </body>
+	</div>
+</body>
 </html>

@@ -6,33 +6,24 @@ var app = {
     },
 
     onDeviceReady: function() {
-        document.getElementById("btnInserir").addEventListener("click",app.inserir);
-       
+        document.getElementById("btnInserir").addEventListener("click",app.inserir);  
     },
 
     inserir: function(){
-        let cnome = document.getElementById("txtNome").value;
-        let ctelefone = document.getElementById("txtTelefone").value;
-        let corigem = document.getElementById("txtOrigem").value;
-        let cdata_contato = document.getElementById("txtDataContato").value;
-        let cobservacao = document.getElementById("txtObservacao").value;
-
         var db = firebase.firestore();
+        var ag = db.collection("agendamentos");
 
-        db.collection("agendamentos").add({
-            nome: cnome,
-            telefone: ctelefone,
-            origem: corigem,
-            data_contato: cdata_contato,
-            observacao: cobservacao
-        })
-        .then((docRef) => {
-            alert("Document written with ID: ", docRef.id);
+        ag.add({
+            nome: document.getElementById("txtNome").value,
+            telefone: document.getElementById("txtTelefone").value,
+            origem: document.getElementById("txtOrigem").value,
+            data_contato: document.getElementById("txtDataContato").value,
+            observacao: document.getElementById("txtObservacao").value
         })
         .catch((error) => {
-            alert("Error adding document: ", error);
+            console.log("Error getting documents: ", error);
         });
-    },
+    }
     
 };
 
