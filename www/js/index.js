@@ -11,20 +11,28 @@ var app = {
 
     inserir: function(){
         var db = firebase.firestore();
-        var ag = db.collection("agendamentos");
 
-        ag.add({
-            nome: document.getElementById("txtNome").value,
-            telefone: document.getElementById("txtTelefone").value,
-            origem: document.getElementById("txtOrigem").value,
-            data_contato: document.getElementById("txtDataContato").value,
-            observacao: document.getElementById("txtObservacao").value
+        let cnome = document.getElementById("txtNome").value;
+        let ctelefone = document.getElementById("txtTelefone").value;
+        let corigem = document.getElementById("txtOrigem").value;
+        let cdata_contato = document.getElementById("txtDataContato").value;
+        let cobservacao = document.getElementById("txtObservacao").value;
+
+        db.collection("agendamentos").add({
+            nome: cnome,
+            telefone: ctelefone,
+            origem: corigem,
+            data_contato: cdata_contato,
+            observacao: cobservacao
+        })
+        .then((docRef) => {
+            console.log("Document written with ID: ", docRef.id);
         })
         .catch((error) => {
-            console.log("Error getting documents: ", error);
+            console.error("Error adding document: ", error);
         });
-    }
-    
+
+    }  
 };
 
 app.initialize();

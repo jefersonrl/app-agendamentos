@@ -23,7 +23,7 @@ var app = {
                 $("#TableData").append("<td scope='col'>" + doc.data().origem + "</td>");
                 $("#TableData").append("<td scope='col'>" + doc.data().data_contato + "</td>");
                 $("#TableData").append("<td scope='col'>" + doc.data().observacao + "</td>");
-                $("#TableData").append("<td scope='col'>link</td>");
+                $("#TableData").append("<td scope='col'><a href='" + cordova.file.applicationDirectory + "www/editarClientes.html?telefone=" + doc.data().telefone + "'>Editar</a>&nbsp;|&nbsp;<a href='" + cordova.file.applicationDirectory + "www/excluirClientes.html?telefone=" + doc.data().telefone + "'>Excluir</a></td>");
                 $("#TableData").append("</tr>");
             });
         })
