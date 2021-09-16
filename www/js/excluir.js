@@ -42,20 +42,33 @@ var app = {
         var db = firebase.firestore();
         var ag = db.collection("agendamentos").where("telefone", "==", getTelefone);
 
-        ag.get()
-        .then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                db.collection("agendamentos").doc(doc.id).delete().then(() => {
-                    console.log("Document successfully deleted!");
-                    window.location.href = cordova.file.applicationDirectory + "www/consultarClientes.html";
-                }).catch((error) => {
-                    console.error("Error removing document: ", error);
+        navigator.notification.confirm(
+            'Deseja realmente excluir esse registro?',  // message
+            onConfirm,         // callback
+            'Excluir',         // title
+            ['Sim','Não']      // buttonName
+        );
+
+        function onConfirm(buttonIndex) {
+            // do something
+            if(buttonIndex == 1){
+                ag.get()
+                .then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+                        db.collection("agendamentos").doc(doc.id).delete().then(() => {
+                            console.log("Document successfully deleted!");
+                            window.location.href = cordova.file.applicationDirectory + "www/consultarClientes.html";
+                        }).catch((error) => {
+                            console.error("Error removing document: ", error);
+                        });
+                    });
+                })
+                .catch((error) => {
+                    console.log("Error getting documents: ", error);
                 });
-            });
-        })
-        .catch((error) => {
-            console.log("Error getting documents: ", error);
-        });
+            }
+        }
+
     }
 
 };
